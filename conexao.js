@@ -6,5 +6,3 @@ export const conexao  = await mysql.createConnection({
     password: '',
     database: 'frente_caixa'
 })
-
-console.log('fim');
