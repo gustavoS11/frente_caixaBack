@@ -1,11 +1,12 @@
-import { conexao } from '../conexao.js'
+import { conexao } from "../conexao.js"
 
 export async function getUsuarioModel(dados) {
     try {
-        const [results, fields] = await conexao.query(`select * from usuario where login = '${dados.email}'`)
-        return results;
-        console.log("feito")
+        const query = `SELECT * FROM usuario WHERE login = '${dados.email}'`
+        const [results] = await conexao.query(query, [dados.body])
+        return results
     } catch (err) {
-        console.log(err)
+        console.error("Erro ao buscar usuário:", err)
+        throw err
     }
 }
