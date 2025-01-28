@@ -6,7 +6,6 @@ export async function getUsuarioModel(dados) {
         const [results] = await conexao.query(query, [dados.body])
         return results
     } catch (err) {
-        console.error("Erro ao buscar usuário:", err)
         throw err
     }
 }
