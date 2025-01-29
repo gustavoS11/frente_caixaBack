@@ -1,14 +1,14 @@
-import { conexao } from "./conexao.js";
-import express from "express";
-import cors from "cors";
-import { rotaUsers } from "./routes/user.rota.js";
+import { conexao } from "./conexao.js"
+import express from "express"
+import cors from "cors"
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-app.use("/user", rotaUsers);
+import { rotaUser } from "./routes/user.rota.js"
+import {rotaProduct} from './routes/product.rota.js'
 
-app.listen(3000, () => console.log("Servidor funcionando"));
+const app = express()
+app.use(express.json())
+app.use(cors())
+app.use("/user", rotaUser)
+app.use('/product',rotaProduct)
 
-//import {rotaProducts} from './routes/product.rota.js'
-//app.use('/product',rotaProducts)
+app.listen(3000, () => console.log("Servidor funcionando"))

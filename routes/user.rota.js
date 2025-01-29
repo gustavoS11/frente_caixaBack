@@ -1,6 +1,7 @@
 import { Router } from 'express'
-import { login } from '../controllers/user.controller.js'
+import { login, register } from '../controllers/user.controller.js'
 
-export const rotaUsers = Router()
+export const rotaUser = Router()
 
-rotaUsers.post('/login', login)
+rotaUser.post('/login', login)
+rotaUser.post('/register', register)
