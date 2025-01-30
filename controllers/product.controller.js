@@ -1,4 +1,4 @@
-import { getCityModel, getHoodModel, getStateModel} from "../models/product.model.js"
+import { getCityModel, getHoodModel, getStateModel, getPaymentTypeModel} from "../models/product.model.js"
 
 export async function getState(req, res) {
     const state = await getStateModel()
@@ -22,4 +22,11 @@ export async function getHood(req, res) {
         return res.status(404).json({ erro: 'erro na requisição dos bairros' })
     }
     return res.status(200).json(hood)
+}
+export async function getAllPayment(req, res) {
+    const payment = await getPaymentTypeModel()
+    if (payment.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na requisição dos pagamentos' })
+    }
+    return res.status(200).json(payment)
 }

@@ -27,3 +27,12 @@ export async function getHoodModel(dados) {
         throw err
     }
 }
+export async function getPaymentTypeModel() {
+    try {
+        const query = `SELECT * FROM tipo_recebimento`
+        const [results] = await conexao.query(query)
+        return results
+    } catch (err) {
+        throw err
+    }
+}
