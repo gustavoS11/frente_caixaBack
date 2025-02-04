@@ -1,4 +1,4 @@
-import { getUsuarioModel, postClientModel, postPaymentModel, postUserModel } from "../models/user.model.js"
+import { getUsuarioModel, postClientModel, postPaymentModel, postUserModel, postItemModel, postBarCode } from "../models/user.model.js"
 
 export async function login(req, res) {
     const dados = req.body
@@ -32,4 +32,20 @@ export async function client(req, res) {
         return res.status(404).json({ erro: 'erro na criação do usuário' })
     }
     return res.status(200).json(createClient[0])
+}
+export async function item(req, res) {
+    const dados = req.body
+    const createItem = await postItemModel(dados)
+    if (createItem.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na criação do item' })
+    }
+    return res.status(200).json(createItem[0])
+}
+export async function barcode(req, res) {
+    const dados = req.body
+    const createBarCode = await postBarCode(dados)
+    if (createBarCode.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na criação do código de barras' })
+    }
+    return res.status(200).json(createBarCode)
 }
