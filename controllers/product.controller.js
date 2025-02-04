@@ -1,4 +1,4 @@
-import { getCityModel, getHoodModel, getStateModel, getPaymentTypeModel} from "../models/product.model.js"
+import { getCityModel, getHoodModel, getStateModel, getPaymentTypeModel, getClientsModel, getProductsModel, getProductById} from "../models/product.model.js"
 
 export async function getState(req, res) {
     const state = await getStateModel()
@@ -29,4 +29,26 @@ export async function getAllPayment(req, res) {
         return res.status(404).json({ erro: 'erro na requisição dos pagamentos' })
     }
     return res.status(200).json(payment)
+}
+export async function getClients(req, res) {
+    const client = await getClientsModel()
+    if (client.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na requisição dos clientes' })
+    }
+    return res.status(200).json(client)
+}
+export async function getProducts(req, res) {
+    const product = await getProductsModel()
+    if (product.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na requisição dos produtos' })
+    }
+    return res.status(200).json(product)
+}
+export async function getProductValue(req, res) {
+    const dados = req.body
+    const value = await getProductById(dados)
+    if (value.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na requisição do valor do produto' })
+    }
+    return res.status(200).json(value[0])
 }

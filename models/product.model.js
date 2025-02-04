@@ -36,3 +36,30 @@ export async function getPaymentTypeModel() {
         throw err
     }
 }
+export async function getClientsModel() {
+    try {
+        const query = `SELECT * FROM cliente`
+        const [results] = await conexao.query(query)
+        return results
+    } catch (err) {
+        throw err
+    }
+}
+export async function getProductsModel() {
+    try {
+        const query = `SELECT * FROM item`
+        const [results] = await conexao.query(query)
+        return results
+    } catch (err) {
+        throw err
+    }
+}
+export async function getProductById(dados) {
+    try {
+        const query = `SELECT * FROM item WHERE id_item = ${dados.product}`
+        const [results] = await conexao.query(query)
+        return results
+    } catch (err) {
+        throw err
+    }
+}
