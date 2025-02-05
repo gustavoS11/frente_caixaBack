@@ -67,3 +67,12 @@ export async function postBarCode(dados) {
         throw err
     }
 }
+export async function postPromotion(dados) {
+    try {
+        const query = `INSERT INTO promocao (id_cliente, id_item, valor_item, status) VALUES ('${dados.client}', '${dados.product}', '${dados.value}', 'ativo')`
+        const [results] = await conexao.query(query, [dados.body])
+        return results
+    } catch (err) {
+        throw err
+    }
+}

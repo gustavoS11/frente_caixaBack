@@ -1,4 +1,4 @@
-import { getUsuarioModel, postClientModel, postPaymentModel, postUserModel, postItemModel, postBarCode } from "../models/user.model.js"
+import { getUsuarioModel, postClientModel, postPaymentModel, postUserModel, postItemModel, postBarCode, postPromotion } from "../models/user.model.js"
 
 export async function login(req, res) {
     const dados = req.body
@@ -48,4 +48,12 @@ export async function barcode(req, res) {
         return res.status(404).json({ erro: 'erro na criação do código de barras' })
     }
     return res.status(200).json(createBarCode)
+}
+export async function promotion(req, res) {
+    const dados = req.body
+    const createPromotion = await postPromotion(dados)
+    if (createPromotion.lenght == 0) {
+        return res.status(404).json({ erro: 'erro na criação da promoção' })
+    }
+    return res.status(200).json(createPromotion)
 }
