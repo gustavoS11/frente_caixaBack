@@ -17,15 +17,15 @@ export async function postClientModel(dados) {
         const cpfCnpj = dados.cpfCnpj
         const rg = dados.rg
         const birth = dados.birth
-        const state = dados.state
         const cityID = dados.cityId
         const hood = dados.hood
         const road = dados.road
         const houseNumber = dados.houseNumber
         const email = dados.email
+        const stateRegistration = dados.stateRegistration
 
         const query = `INSERT INTO cliente (nome_cliente, codigo, natureza, cnpj_cpf, rg, nascimento, id_municipio, inscricao_estadual, bairro, numero, logradouro, email, ativo) VALUES
-        ('${name}', '${code}', '${nature}', '${cpfCnpj}', '${rg}', '${birth}', '${cityID}', '${state}', '${hood}', '${houseNumber}', '${road}', '${email}', 'y')`
+        ('${name}', '${code}', '${nature}', '${cpfCnpj}', '${rg}', '${birth}', '${cityID}', '${stateRegistration}', '${hood}', '${houseNumber}', '${road}', '${email}', 'y')`
         const [results] = await conexao.query(query, [dados.body])
         return results
     } catch (err) {
